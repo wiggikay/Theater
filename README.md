@@ -1,9 +1,9 @@
-# utensil
+# Utensil
 Repository for SI 206 project.
 
 Task list:
 
-     ---- PART 1 ----
+ ---- PART 1 ----
  1. Create a list of nations to pull dishes from (make sure each nation has a list of at list 50 top dishes on tasteatlas)
     and create a database in this directory to store a table of nation names and id numbers. The id numbers will
     be used later in the table containing dish information.
