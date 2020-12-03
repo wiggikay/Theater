@@ -62,8 +62,44 @@ Task list:
     ---- Part 3 ----
 
 6. Fill out the diet attribute for each dish. We'll most likely need to use Edamam's API for this. The Edamam API can do this in two steps. 
-    - Step one is getting the food id and uri for all the necessary ingredients (use caching so you don't have to make the same requests over and over).
-    - Step two is putting that information into an ingredient list so that we can request nutrition information from Edamam. This means getting the ingredient list from the SQLite entry for each dish and cross referencing the ingredient id and uri to make a POST request for the nutrition information for the dish.
+    - Step one is using the Nutrition Analysis API to get the diet labels and health labels of each food item mentioned in the ingredient list made in PART 2. We should make sure that we're aware of any ingredient queries that get rejected by Edamam's API (because we may be able to fix that and missing certain ingredients could make our data crappy). Use caching so you don't have to make the same requests over and over again. The resulting health and diet labels should go into a JSON formatted txt file as follows:
+    
+            {
+            "red apple": {
+                "healthLabels": [
+                    "FAT_FREE",
+                    "LOW_FAT_ABS",
+                    "LOW_POTASSIUM",
+                    "KIDNEY_FRIENDLY",
+                    "VEGAN",
+                    "VEGETARIAN",
+                    "PESCATARIAN",
+                    "PALEO",
+                    "SPECIFIC_CARBS",
+                    "DAIRY_FREE",
+                    "GLUTEN_FREE",
+                    "WHEAT_FREE",
+                    "EGG_FREE",
+                    "MILK_FREE",
+                    "PEANUT_FREE",
+                    "TREE_NUT_FREE",
+                    "SOY_FREE",
+                    "FISH_FREE",
+                    "SHELLFISH_FREE",
+                    "PORK_FREE",
+                    "RED_MEAT_FREE",
+                    "ALCOHOL_FREE",
+                    "NO_OIL_ADDED",
+                    "NO_SUGAR_ADDED",
+                    "KOSHER"
+                ],
+                "dietLabels": [
+                    "LOW_FAT",
+                    "LOW_SODIUM"
+                ]
+            }
+          }
+    - Step two is cross referencing the diet and health labels of each ingredient in each list in order to add the appropriate health and diet labels to their SQLite entry. For example, if a dish has three ingredients, we'll give it the VEGAN label if each of it's ingredients has the VEGAN label.
     
     It's best if each of us does one step in part 3 because it's a lot of work. The documentation for this is here. https://developer.edamam.com/food-database-api-docs
 
