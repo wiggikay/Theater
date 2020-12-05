@@ -5,7 +5,12 @@ Task list:
 
  ---- PART 1 ----
 
-1. Parse various lists on IMDB's website with Beautiful Soup in order to create a list of relevant actors and actresses. This list will be used to make queries to themoviedb API. Output the results to a JSON formatted text file like so:
+1. Parse various lists on IMDB's website with Beautiful Soup in order to create a list of relevant actors and actresses. This list will be used to make queries to themoviedb API. Use the following pages to collect actors: 
+https://www.imdb.com/list/ls045044639/ - All the actors can come from this list
+https://www.imdb.com/list/ls095375202/ - 33 Actresses can come from this list 
+https://www.imdb.com/list/ls040519328/?sort=list_order,asc&mode=detail&page=1 - if we need more actresses use this list
+
+Output the results to a JSON formatted text file like so:
 
        {
            "actors": [
