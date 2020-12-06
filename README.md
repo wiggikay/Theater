@@ -35,7 +35,3 @@ Output the results to a JSON formatted text file like so:
 --- PART 3 --- 
 
 6. Calculate some stuff. This is post data collection so I'll worry about it later.
-
-
-
-    
