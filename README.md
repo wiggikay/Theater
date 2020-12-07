@@ -21,7 +21,7 @@ Output the results to a JSON formatted text file like so:
            ]
        }
 
-2. Use the list of actors and actresses from step 1 to query themoviedb API using the Search People method. Add the actors to a table in the sqlite database. Each tuple should have the following attributes: actor_id, name, gender, films, avg_rating, fav_genre. actor_id is the primary key, gender is the gender code provided by themoviedb, films is a list of film ids associated with the actor, avg_rating is the average rating of their films which will be calculated later, and fav_genre is the genre of film that the actor works in most often which will also be calculated later. Leave avg_imdb and fav_genre blank for now.
+2. Use the list of actors and actresses from step 1 to query themoviedb API using the Search People method. Add the actors to a table in the sqlite database. Each tuple should have the following attributes: actor_id, name, gender, films, avg_rating, fav_genre. actor_id is the primary key, gender is the gender code provided by themoviedb, films is a list of film ids associated with the actor, avg_rating is the average rating of their films which will be calculated later, and fav_genre is the genre of film that the actor works in most often which will also be calculated later. Leave avg_rating and fav_genre blank for now.
 
 ---- PART 2 ----
 
