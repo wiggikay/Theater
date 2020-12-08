@@ -2,13 +2,14 @@ import requests
 import json
 import sqlite3
 
+
 ############# The db file ##############
-db_file = 'popular_actors1.db'
+db_file = 'Popular_Actors.db'
 conn = sqlite3.connect(db_file)
 cur = conn.cursor()
 
 #cur.execute('CREATE TABLE IF NOT EXISTS Actors (actor_id INTEGER PRIMARY KEY, name TEXT, gender INTEGER, films TEXT, avg_rating INTEGER, fav_genre INTEGER)')
-cur.execute('CREATE TABLE IF NOT EXISTS Films (film_id INTEGER PRIMARY KEY, name TEXT, genres TEXT, rating INTEGER, release_date TEXT)')
+cur.execute('CREATE TABLE IF NOT EXISTS Films (film_id INTEGER PRIMARY KEY, name TEXT, genres TEXT, rating INTEGER)')
 
 conn.commit()
 #########################################
@@ -38,26 +39,28 @@ def pull_films(info):
             genres.append(str(genre))
 
         votes = pos["vote_average"]
-        if "release_date" in pos:
-            date = pos["release_date"]
-        else:
-            date = ""
-        cur.execute('INSERT or IGNORE INTO Films (film_id, name, genres, rating, release_date) VALUES (?, ?, ?, ?, ?)', (identity, name, ",".join(genres), votes, date))
+        cur.execute('INSERT or IGNORE INTO Films (film_id, name, genres, rating) VALUES (?, ?, ?, ?)', (identity, name, ",".join(genres), votes))
         filmography.append(str(identity))
     conn.commit()
     return filmography
 
+def select_actors():
+    '''
+    Selects up tp 25 actors to query with the API based on whether or not they 
+    have already been called.
+    '''
+    cur.execute('SELECT actor_id FROM Actors WHERE actor_films IS NULL OR actor_films=""')
+    disk = []
+    for actor in cur:
+        disk.append(actor)
+    return disk[:25]
 
 def call_actors():
     '''
     Selects all of the actors from the database and adds a list of 10 of their best rated films 
     to their films attribute.
     '''
-    cur.execute('SELECT actor_id, actor_name FROM Actors')
-    disk = []
-    for actor in cur:
-        disk.append(actor)
-
+    disk = select_actors()
     for actor in disk:
         actor_id = actor[0]
         full_req = base + str(actor_id)
