@@ -57,7 +57,7 @@ def select_actors():
 
 def call_actors():
     '''
-    Selects all of the actors from the database and adds a list of 10 of their best rated films 
+    Selects up to 25 from the database and adds a list of 10 of their best rated films 
     to their films attribute.
     '''
     disk = select_actors()
