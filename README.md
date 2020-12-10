@@ -25,11 +25,7 @@ The pie chart is the img file piechart
 
 Step 1:
 
-
-
-
-
-
+Step 1 is to run the part1.py python file to setup a database and create two tables Actors and Acor_Popularity. Data about most popular actors is collected from the 'themoviedb' API and the imdb website. The two tables are filled with These two different datas and completed. One point to note, the Actors_Popularity table has an empty string in films column. This column will be updated later.
 
 Step 2:
 
@@ -38,10 +34,10 @@ Step two is use the Popular_Actors.db Actors table to create a new table called 
 Part 3:
 
 --Visualization 1 (Scatterplot)
-
+Run visualization1.py to create a scatterplot showing the relation of popularity rank and their average film rating. The method also outputs the calculated correlation coefficient of the scatterplot. The results show that there is a negative weak correlation. This shows that as popularity rank increases, the average film rating decreases. The correlation value is -0.19.
 
  -- Visualization 2 (Histogram)
 Run calculate.py to populate the film_avg attribute of the Actor's table, create a histogram of the average film ratings for the top and bottom half of the top 100 list, and output a JSON formatted txt file called calculation_results.txt with the calculation results. The histogram shows that both sides of the rank have similar distribution but the top 10 are more distributed in the < 8.5 range. Overall, the top 50 actors do have, on average, films that are ranked higher, so there is a strong correlation between the two.
 
  -- Visualization 3 (Pie chart)
-
+Run visualization3.py to create a pie chart depicting the different genres of the 731 films presnt in the Films table. This shows what kinds of films, popular actors mostly do. The top five results are Drama (23.4%), Documentary (14.7%), comedy (7.3%), Action (6.5%), Crime (6.2%)
