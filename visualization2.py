@@ -61,6 +61,20 @@ def add_genre_names(data, cur):
         data[i][0] = list1[i][1]
     return data
 
+def dump_results(data):
+    '''
+    Creates a JSON response containing the different genre id's and the number of occurrences
+    for the films of the top 100 actors ranked by popularity.
+    The method takes the data as a a parameter.
+    '''
+    dict = {}
+    for item in data:
+        dict[item[0]] = item[1]
+    body = {}
+    body["Most Popular film Genres"] = dict
+
+    with open('piechart_results.txt', 'w') as fp:
+        json.dump(body, fp, indent=4)
 
 def create_pie_chart(data):
     '''
@@ -87,6 +101,7 @@ def main():
     data = create_data_dict(cur)
     data2 = clean_data_dict(data)
     data3 = add_genre_names(data2, cur)
+    dump_results(data3)
     create_pie_chart(data3)
 
 if __name__ == "__main__":
