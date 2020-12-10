@@ -1,8 +1,6 @@
 # Theater
 Repository for SI 206 project.
 
-Repository for SI 206 project.
-
 Report
 
 --- Goals & Achieved Goals ---
